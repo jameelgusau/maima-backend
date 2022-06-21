@@ -28,7 +28,7 @@ export class AdminService {
   async addCategory(category): Promise<any> {
     const findOne = await this.productCategory.findOne({ where:{name:category.name}});
     if(findOne){
-      console.log(findOne)
+      // console.log(findOne)
       throw new HttpException(
         {
           status: 'error',
@@ -44,7 +44,7 @@ export class AdminService {
   async updateCategory(category): Promise<any> {
     const findOne = await this.productCategory.findByPk(category.id);
     if(!findOne){
-      console.log(findOne, "1")
+      // console.log(findOne, "1")
       throw new HttpException(
         {
           status: 'error',

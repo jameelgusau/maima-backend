@@ -50,7 +50,7 @@ export class AccountsController {
 
   @Post('forgot-password')
   async forgotPassword(@Body() body: ForgotPasswordDto,  @Request() req) {
-    console.log(req.get('origin'))
+    // console.log(req.get('origin'))
     const { email } = body
     try {
       const user = this.accountsService.forgotPassword(email, req.get('origin') );

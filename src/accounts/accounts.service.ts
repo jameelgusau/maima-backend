@@ -80,7 +80,7 @@ export class AccountsService {
 
 
   async login(user: any) {
-    console.log(user)
+    // console.log(user)
     const payload = { email: user.email, sub: user.id, roles: [user.role] };
     return {
       accessToken: this.jwtService.sign(payload),
@@ -165,7 +165,7 @@ export class AccountsService {
       HttpStatus.NOT_FOUND,
     );
     const token= await this.randomTokenString()
-    console.log(token)
+    // console.log(token)
     await this.userModel.update({token}, { where: { email } })
     await this.sendPasswordResetEmail({email, token}, origin)
     return  {status: 'success', message: `Please check your email ${email} for password reset instructions`};
@@ -190,7 +190,7 @@ export class AccountsService {
 }
 async sendEmail({ to, subject, html, from = "maimaorg@gmail.com.com" }) {
   mg.messages.create('stetis.com',{ to, subject, html, from}, function (error, body) {
-    console.log(body);
+    // console.log(body);
   });
 }
 
