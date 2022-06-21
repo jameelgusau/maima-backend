@@ -74,6 +74,11 @@ export class AdminService {
       where:{ id: params}
     });
   }
+  async deleteCategory(params: string): Promise<Brand> {
+    return await this.brandModel.findOne({
+      where:{ id: params}
+    });
+  }
   async addProduct(product): Promise<Product> {
     const data = await this.productModel.create(product);
     if (product.categories) {

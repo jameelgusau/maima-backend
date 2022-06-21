@@ -7,6 +7,7 @@ import {
   Param,
   Post,
   Res,
+  Delete,
   UseGuards,
   UploadedFile,
   UploadedFiles,
@@ -71,6 +72,21 @@ export class AdminController {
     }
   }
 
+  @Delete(':id')
+  async deleteCategory(@Param('id') id: string){
+    try {
+      const products = await this.adminService.deleteCategory(id);
+      return { status: 'success', message: 'Products fetched', data: products };
+    } catch (error) {
+      throw new HttpException(
+        {
+          status: 'error',
+          error: error.message,
+        },
+        HttpStatus.FORBIDDEN,
+      );
+    }
+  }
   // NB - Remember to add validation to check that the categories exist
   @Post('product')
   @UseInterceptors(
